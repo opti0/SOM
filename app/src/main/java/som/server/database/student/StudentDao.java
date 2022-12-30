@@ -27,10 +27,8 @@ public class StudentDao implements Dao<Student, String> {
 
             return student;
         } catch (SQLException e) {
-            e.printStackTrace();
+            return Optional.empty();
         }
-
-        return Optional.empty();
     }
 
     @Override
@@ -44,7 +42,7 @@ public class StudentDao implements Dao<Student, String> {
             List<Student> students = new ArrayList<>();
 
             while (generator.hasNext()) {
-               generator.getNext().ifPresent(students::add);
+                generator.getNext().ifPresent(students::add);
             }
 
             statement.close();
@@ -52,10 +50,8 @@ public class StudentDao implements Dao<Student, String> {
 
             return students;
         } catch (SQLException e) {
-            e.printStackTrace();
+            return new ArrayList<>();
         }
-
-        return new ArrayList<>();
     }
 
     @Override
@@ -67,8 +63,8 @@ public class StudentDao implements Dao<Student, String> {
 
             statement.close();
             connection.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (SQLException ignored) {
+
         }
     }
 
