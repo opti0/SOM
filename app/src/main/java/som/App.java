@@ -9,6 +9,9 @@ public class App {
     }
 
     public static void main(String[] args) {
+
+        Window window = new Window(1000, 600);
+
         var students = new StudentDao().getAll();
         var student = new StudentDao().get("12345678901");
         System.out.println(student.isPresent());
