@@ -6,16 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Optional;
 
-public class RoomParser implements SqlParser<Room, String> {
-    public String createInsertQuery(Room room) {
-        return "INSERT INTO Sala VALUES ('" +
-                "null" + "', '" +
-                room.roomNumber() + "', '" +
-                room.numberOfSeats() +"');";
-    }
+public class RoomParser implements SqlParser<Room, Integer> {
 
     @Override
-    public String createGetQuery(String key) {
+    public String createGetQuery(Integer key) {
         return String.format("SELECT * FROM Sala WHERE ID_Sali=\"%s\";", key);
     }
 
@@ -26,10 +20,9 @@ public class RoomParser implements SqlParser<Room, String> {
 
     @Override
     public String createSaveQuery(Room room) {
-        return "INSERT INTO Sala VALUES ('" +
-                "null" + "', '" +
-                room.roomNumber() + "', '" +
-                room.numberOfSeats() +"');";
+        return "INSERT INTO Sala VALUES (null, " +
+                room.roomNumber() + ", " +
+                room.numberOfSeats() +");";
     }
 
     @Override

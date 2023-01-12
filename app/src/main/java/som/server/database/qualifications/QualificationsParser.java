@@ -6,17 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Optional;
 
-public class QualificationsParser implements SqlParser<Qualifications, String> {
-    public String createInsertQuery(Qualifications qualifications) {
-        return "INSERT INTO Kwalifikacje VALUES ('" +
-                "null" + "', '" +
-                qualifications.qualificationsId() + "', '" +
-                qualifications.teacher() + "', '" +
-                qualifications.subject() +"');";
-    }
+public class QualificationsParser implements SqlParser<Qualifications, Integer> {
 
     @Override
-    public String createGetQuery(String key) {
+    public String createGetQuery(Integer key) {
         return String.format("SELECT * FROM Kwalifikacje WHERE ID_KD=\"%s\";", key);
     }
 
@@ -27,11 +20,10 @@ public class QualificationsParser implements SqlParser<Qualifications, String> {
 
     @Override
     public String createSaveQuery(Qualifications qualifications) {
-        return "INSERT INTO Kwalifikacje VALUES ('" +
-                "null" + "', '" +
-                qualifications.qualificationsId() + "', '" +
-                qualifications.teacher() + "', '" +
-                qualifications.subject() +"');";
+        return "INSERT INTO Kwalifikacje VALUES (null, " +
+                qualifications.qualificationsId() + ", " +
+                qualifications.teacher() + ", " +
+                qualifications.subject() + ");";
     }
 
     @Override

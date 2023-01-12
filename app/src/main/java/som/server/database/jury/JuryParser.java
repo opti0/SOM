@@ -1,20 +1,15 @@
 package som.server.database.jury;
 
 import som.server.database.SqlParser;
+import som.server.database.utils.Utils;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Optional;
 
-public class JuryParser implements SqlParser<Jury, String> {
-    public String createInsertQuery(Jury jury) {
-        return "INSERT INTO Komisja_Egzaminacyjna VALUES ('" +
-                "null" + "', '" +
-                jury.juryPresident() +"');";
-    }
-
+public class JuryParser implements SqlParser<Jury, Integer> {
     @Override
-    public String createGetQuery(String key) {
+    public String createGetQuery(Integer key) {
         return String.format("SELECT * FROM Komisja_Egzaminacyjna WHERE ID_KE=\"%s\";", key);
     }
 
@@ -25,9 +20,8 @@ public class JuryParser implements SqlParser<Jury, String> {
 
     @Override
     public String createSaveQuery(Jury jury) {
-        return "INSERT INTO Komisja_Egzaminacyjna VALUES ('" +
-                "null" + "', '" +
-                jury.juryPresident() +"');";
+        return "INSERT INTO Komisja_Egzaminacyjna VALUES (null, " +
+                Utils.toSqlQuery(jury.juryPresident()) +");";
     }
 
     @Override

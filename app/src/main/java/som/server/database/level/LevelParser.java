@@ -6,15 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Optional;
 
-public class LevelParser implements SqlParser<Level, String> {
-    public String createInsertQuery(Level level) {
-        return "INSERT INTO Poziom VALUES ('" +
-                "null" + "', '" +
-                level.name() +"');";
-    }
-
+public class LevelParser implements SqlParser<Level, Integer> {
     @Override
-    public String createGetQuery(String key) {
+    public String createGetQuery(Integer key) {
         return String.format("SELECT * FROM Poziom WHERE ID_Poziomu=\"%s\";", key);
     }
 
@@ -25,9 +19,8 @@ public class LevelParser implements SqlParser<Level, String> {
 
     @Override
     public String createSaveQuery(Level level) {
-        return "INSERT INTO Poziom VALUES ('" +
-                "null" + "', '" +
-                level.name() +"');";
+        return "INSERT INTO Poziom VALUES (null, " +
+                level.name() +");";
     }
 
     @Override

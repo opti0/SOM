@@ -24,6 +24,7 @@ dependencies {
     implementation("com.google.guava:guava:31.1-jre")
 
     implementation("mysql:mysql-connector-java:8.0.31")
+    implementation("com.opencsv:opencsv:5.7.1")
 }
 
 application {

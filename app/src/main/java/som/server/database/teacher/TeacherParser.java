@@ -6,18 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Optional;
 
-public class TeacherParser implements SqlParser<Teacher, String> {
-    public String createInsertQuery(Teacher teacher) {
-        return "INSERT INTO Nauczyciel VALUES ('" +
-                "null" + "', '" +
-                teacher.name() + "', '" +
-                teacher.surname() + "', '" +
-                teacher.fromOtherSchool() + "', '" +
-                teacher.phoneNumber() +"');";
-    }
+public class TeacherParser implements SqlParser<Teacher, Integer> {
 
     @Override
-    public String createGetQuery(String key) {
+    public String createGetQuery(Integer key) {
         return String.format("SELECT * FROM Nauczyciel WHERE ID_Nauczyciela=\"%s\";", key);
     }
 
@@ -28,12 +20,11 @@ public class TeacherParser implements SqlParser<Teacher, String> {
 
     @Override
     public String createSaveQuery(Teacher teacher) {
-        return "INSERT INTO Nauczyciel VALUES ('" +
-                "null" + "', '" +
-                teacher.name() + "', '" +
-                teacher.surname() + "', '" +
-                teacher.fromOtherSchool() + "', '" +
-                teacher.phoneNumber() +"');";
+        return "INSERT INTO Nauczyciel VALUES (null, " +
+                teacher.name() + ", " +
+                teacher.surname() + ", " +
+                teacher.fromOtherSchool() + ", " +
+                teacher.phoneNumber() +");";
     }
 
     @Override

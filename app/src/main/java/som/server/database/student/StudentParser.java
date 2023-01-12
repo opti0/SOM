@@ -1,25 +1,16 @@
 package som.server.database.student;
 
 import som.server.database.SqlParser;
+import som.server.database.utils.Utils;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Optional;
 
-public class StudentParser implements SqlParser<Student, String> {
-    public String createInsertQuery(Student student) {
-        return "INSERT INTO Uczen VALUES ('" +
-                student.pesel() + "', '" +
-                student.name() + "', '" +
-                student.surname() + "', '" +
-                student.requireAdjustments() + "', '" +
-                student.studentCode() + "', '" +
-                student.phoneNumber() + "', '" +
-                student.email() +"');";
-    }
+public class StudentParser implements SqlParser<Student, Integer> {
 
     @Override
-    public String createGetQuery(String key) {
+    public String createGetQuery(Integer key) {
         return String.format("SELECT * FROM Uczen WHERE PESEL=\"%s\";", key);
     }
 
@@ -30,14 +21,14 @@ public class StudentParser implements SqlParser<Student, String> {
 
     @Override
     public String createSaveQuery(Student student) {
-        return "INSERT INTO Uczen VALUES ('" +
-                student.pesel() + "', '" +
-                student.name() + "', '" +
-                student.surname() + "', '" +
-                student.requireAdjustments() + "', '" +
-                student.studentCode() + "', '" +
-                student.phoneNumber() + "', '" +
-                student.email() +"');";
+        return "INSERT INTO Uczen VALUES (" +
+                Utils.toSqlQuery(student.pesel()) + ", " +
+                Utils.toSqlQuery(student.name()) + ", " +
+                Utils.toSqlQuery(student.surname()) + ", " +
+                Utils.toSqlQuery(student.requireAdjustments()) + ", " +
+                Utils.toSqlQuery(student.studentCode()) + ", " +
+                Utils.toSqlQuery(student.phoneNumber()) + ", " +
+                Utils.toSqlQuery(student.email()) + ");";
     }
 
     @Override

@@ -6,16 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Optional;
 
-public class LicensesParser implements SqlParser<Licenses, String> {
-    public String createInsertQuery(Licenses licenses) {
-        return "INSERT INTO Uprawnienia VALUES ('" +
-                "null" + "', '" +
-                licenses.teacher() + "', '" +
-                licenses.licenses() +"');";
-    }
+public class LicensesParser implements SqlParser<Licenses, Integer> {
 
     @Override
-    public String createGetQuery(String key) {
+    public String createGetQuery(Integer key) {
         return String.format("SELECT * FROM Uprawnienia WHERE ID_Uprawnienia=\"%s\";", key);
     }
 
@@ -26,10 +20,9 @@ public class LicensesParser implements SqlParser<Licenses, String> {
 
     @Override
     public String createSaveQuery(Licenses licenses) {
-        return "INSERT INTO Uprawnienia VALUES ('" +
-                "null" + "', '" +
-                licenses.teacher() + "', '" +
-                licenses.licenses() +"');";
+        return "INSERT INTO Uprawnienia VALUES (null, "+
+                licenses.teacher() + ", " +
+                licenses.licenses() +");";
     }
 
     @Override

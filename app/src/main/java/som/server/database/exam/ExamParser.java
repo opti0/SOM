@@ -1,21 +1,15 @@
 package som.server.database.exam;
 
 import som.server.database.SqlParser;
+import som.server.database.utils.Utils;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Optional;
 
-public class ExamParser implements SqlParser<Exam, String> {
-    public String createInsertQuery(Exam exam) {
-        return "INSERT INTO Egzamin VALUES ('" +
-                "null, " +
-                exam.subject() + "', '" +
-                exam.level() +"');";
-    }
-
+public class ExamParser implements SqlParser<Exam, Integer> {
     @Override
-    public String createGetQuery(String key) {
+    public String createGetQuery(Integer key) {
         return String.format("SELECT * FROM Egzamin WHERE ID_Egzaminu=\"%s\";", key);
     }
 
@@ -26,10 +20,9 @@ public class ExamParser implements SqlParser<Exam, String> {
 
     @Override
     public String createSaveQuery(Exam exam) {
-        return "INSERT INTO Egzamin VALUES ('" +
-                "null, " +
-                exam.subject() + "', '" +
-                exam.level() +"');";
+        return "INSERT INTO Egzamin VALUES (null, " +
+                Utils.toSqlQuery(exam.subject()) + ", " +
+                Utils.toSqlQuery(exam.level()) +");";
     }
 
     @Override
