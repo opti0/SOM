@@ -20,6 +20,7 @@ public class StudentPanel extends JScrollPane {
         this.dataPanel = dataPanel;
         reloadData();
     }
+
     public void reloadData() {
         students = DaoConstants.STUDENT.getAll();
         buildTableFromData();

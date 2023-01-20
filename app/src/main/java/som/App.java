@@ -1,5 +1,6 @@
 package som;
 
+import com.formdev.flatlaf.FlatLightLaf;
 import som.client.csv.CsvParser;
 import som.client.gui.Window;
 import som.server.database.DaoConstants;
@@ -25,10 +26,8 @@ public class App {
 
         SwingUtilities.invokeLater(() -> {
             try {
-                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            } catch (ClassNotFoundException | InstantiationException | IllegalAccessException |
-                     UnsupportedLookAndFeelException ignored) {
-            }
+                UIManager.setLookAndFeel(new FlatLightLaf());
+            } catch (Exception ignored) {}
             new Window(1000, 600);
         });
     }

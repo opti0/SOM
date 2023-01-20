@@ -22,9 +22,9 @@ dependencies {
 
     // This dependency is used by the application.
     implementation("com.google.guava:guava:31.1-jre")
-
     implementation("mysql:mysql-connector-java:8.0.31")
     implementation("com.opencsv:opencsv:5.7.1")
+    implementation("com.formdev:flatlaf:3.0")
 }
 
 application {
