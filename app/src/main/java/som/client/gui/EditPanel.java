@@ -1,6 +1,7 @@
 package som.client.gui;
 
 import som.server.database.Dao;
+import som.server.database.DaoConstants;
 import som.server.database.exam.Exam;
 import som.server.database.exam.ExamParser;
 import som.server.database.student.Student;
@@ -43,25 +44,22 @@ public class EditPanel extends JPanel {
 
     public void addStudentToDB(){
         UczenEditPanel uep = (UczenEditPanel) insidePanel;
-        Student debil =  new Student(uep.getPeselVal(), uep.getNameVal(), uep.getSurnameVal(),
+        Student student =  new Student(uep.getPeselVal(), uep.getNameVal(), uep.getSurnameVal(),
                 uep.getAdjustmentsVal(), uep.getStudentCodeVal(), uep.getPhoneNumberVal(), uep.getEmailVal());
-        Dao dao = new Dao(new StudentParser());
-        dao.save(debil);
+        DaoConstants.STUDENT.save(student);
     }
 
     public void addTeacherToDB(){
         NauczycielEditPanel nep = (NauczycielEditPanel) insidePanel;
-        Teacher teacher = new Teacher(nep.getIDVal(), nep.getNameVal(), nep.getSurnameVal(),
+        Teacher teacher = new Teacher(0, nep.getNameVal(), nep.getSurnameVal(),
                 nep.getFOSVal(), nep.getPhoneNumberVal());
-        Dao dao = new Dao(new TeacherParser());
-        dao.save(teacher);
+        DaoConstants.TEACHER.save(teacher);
     }
 
     public void addExamToDB(){
         EgzaminEditPanel eep = (EgzaminEditPanel) insidePanel;
-        Exam exam = new Exam(eep.getIDVal(), eep.getSubjectVal(), eep.getLevelVal());
-        Dao dao = new Dao(new ExamParser());
-        dao.save(exam);
+        Exam exam = new Exam(0, eep.getSubjectVal(), eep.getLevelVal());
+        DaoConstants.EXAM.save(exam);
     }
 
     public void setEditOptions(){

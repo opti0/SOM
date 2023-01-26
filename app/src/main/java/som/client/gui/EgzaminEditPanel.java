@@ -4,12 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class EgzaminEditPanel extends JPanel {
-
-    JLabel IDL = new JLabel("ID");
     JLabel subjectL = new JLabel("Przedmiot");
     JLabel levelL = new JLabel("Poziom");
-
-    JTextField ID = new JTextField();
     JTextField subject = new JTextField();
     JTextField level = new JTextField();
 
@@ -19,16 +15,10 @@ public class EgzaminEditPanel extends JPanel {
     }
 
     public void addComponents(){
-        add(IDL);
-        add(ID);
         add(subjectL);
         add(subject);
         add(levelL);
         add(level);
-    }
-
-    public int getIDVal(){
-        return Integer.parseInt(ID.getText());
     }
 
     public int getSubjectVal(){

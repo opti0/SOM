@@ -4,14 +4,10 @@ import javax.swing.*;
 import java.awt.*;
 
 public class NauczycielEditPanel extends JPanel {
-
-    JLabel IDL = new JLabel("ID");
     JLabel nameL = new JLabel("Imie");
     JLabel surnameL = new JLabel("Nazwisko");
     JLabel FOSL = new JLabel("Czy z innej szkoly    ");
     JLabel phoneNumberL = new JLabel("Nr telefonu");
-
-    JTextField ID = new JTextField();
     JTextField name = new JTextField();
     JTextField surname = new JTextField();
     JCheckBox FOS = new JCheckBox();
@@ -23,8 +19,6 @@ public class NauczycielEditPanel extends JPanel {
     }
 
     public void addComponents(){
-        add(IDL);
-        add(ID);
         add(nameL);
         add(name);
         add(surnameL);
@@ -33,10 +27,6 @@ public class NauczycielEditPanel extends JPanel {
         add(FOS);
         add(phoneNumberL);
         add(phoneNumber);
-    }
-
-    public int getIDVal(){
-        return Integer.parseInt(ID.getText());
     }
 
     public String getNameVal(){
