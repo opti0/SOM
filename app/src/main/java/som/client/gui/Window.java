@@ -17,8 +17,11 @@ public class Window extends JFrame {
         studentsPanel.setName("Uczniowie");
         EditPanel editPanel = new EditPanel();
         editPanel.setName("Edycja");
+        SettingsPanel settingsPanel = new SettingsPanel();
+        settingsPanel.setName("Ustawienia");
         tabs.add(studentsPanel);
         tabs.add(editPanel);
+        tabs.add(settingsPanel);
         add(new TabsPanel(tabs));
 
         pack();
