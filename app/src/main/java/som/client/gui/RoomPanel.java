@@ -22,6 +22,7 @@ public class RoomPanel extends JScrollPane {
     }
 
     public void reloadData() {
+        dataPanel.removeAll();
         rooms = DaoConstants.ROOM.getAll();
         buildTableFromData();
     }

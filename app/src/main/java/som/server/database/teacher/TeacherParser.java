@@ -38,6 +38,11 @@ public class TeacherParser implements SqlParser<Teacher, Integer> {
     }
 
     @Override
+    public String createDeleteAllQuery() {
+        return "truncate Nauczyciel;";
+    }
+
+    @Override
     public Optional<Teacher> makeFrom(ResultSet result) {
         try {
             return Optional.of(new Teacher(

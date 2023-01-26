@@ -36,6 +36,11 @@ public class RoomParser implements SqlParser<Room, Integer> {
     }
 
     @Override
+    public String createDeleteAllQuery() {
+        return "truncate Sala;";
+    }
+
+    @Override
     public Optional<Room> makeFrom(ResultSet result) {
         try {
             return Optional.of(new Room(

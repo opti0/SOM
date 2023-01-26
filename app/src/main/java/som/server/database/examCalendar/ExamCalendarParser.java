@@ -39,6 +39,11 @@ public class ExamCalendarParser implements SqlParser<ExamCalendar, Integer> {
     }
 
     @Override
+    public String createDeleteAllQuery() {
+        return "truncate Terminarz_Egzaminow;";
+    }
+
+    @Override
     public Optional<ExamCalendar> makeFrom(ResultSet result) {
         try {
             return Optional.of(new ExamCalendar(

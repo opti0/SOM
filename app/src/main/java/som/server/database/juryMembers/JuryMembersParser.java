@@ -35,6 +35,11 @@ public class JuryMembersParser implements SqlParser<JuryMembers, Integer> {
     }
 
     @Override
+    public String createDeleteAllQuery() {
+        return "truncate Czlonkowie_Komisji;";
+    }
+
+    @Override
     public Optional<JuryMembers> makeFrom(ResultSet result) {
         try {
             return Optional.of(new JuryMembers(

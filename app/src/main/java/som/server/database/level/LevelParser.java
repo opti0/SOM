@@ -34,6 +34,11 @@ public class LevelParser implements SqlParser<Level, Integer> {
     }
 
     @Override
+    public String createDeleteAllQuery() {
+        return "truncate Poziom;";
+    }
+
+    @Override
     public Optional<Level> makeFrom(ResultSet result) {
         try {
             return Optional.of(new Level(

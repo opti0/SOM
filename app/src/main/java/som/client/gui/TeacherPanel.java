@@ -22,6 +22,7 @@ public class TeacherPanel extends JScrollPane {
     }
 
     public void reloadData() {
+        dataPanel.removeAll();
         teachers = DaoConstants.TEACHER.getAll();
         buildTableFromData();
     }
@@ -35,7 +36,7 @@ public class TeacherPanel extends JScrollPane {
     private void createHeader() {
         dataPanel.add(new JLabel(Utils.toUtf8("Imię"), SwingConstants.CENTER));
         dataPanel.add(new JLabel("Nazwisko", SwingConstants.CENTER));
-        dataPanel.add(new JLabel("Czy z innej szkoły", SwingConstants.CENTER));
+        dataPanel.add(new JLabel(Utils.toUtf8("Czy z innej szkoły"), SwingConstants.CENTER));
         dataPanel.add(new JLabel("Numer telefonu", SwingConstants.CENTER));
     }
 
@@ -46,9 +47,9 @@ public class TeacherPanel extends JScrollPane {
     }
 
     private void createTeacherField(Teacher teacher) {
-        dataPanel.add(new JLabel(Utils.toUtf8(teacher.name()), SwingConstants.CENTER));
-        dataPanel.add(new JLabel(Utils.toUtf8(teacher.surname()), SwingConstants.CENTER));
-        dataPanel.add(new JLabel(Utils.toUtf8(teacher.fromOtherSchool() > 0 ? "•" : ""), SwingConstants.CENTER));
-        dataPanel.add(new JLabel(Utils.toUtf8(teacher.phoneNumber()), SwingConstants.CENTER));
+        dataPanel.add(new JLabel(teacher.name(), SwingConstants.CENTER));
+        dataPanel.add(new JLabel(teacher.surname(), SwingConstants.CENTER));
+        dataPanel.add(new JLabel(teacher.fromOtherSchool() > 0 ? Utils.toUtf8("•") : "", SwingConstants.CENTER));
+        dataPanel.add(new JLabel(teacher.phoneNumber(), SwingConstants.CENTER));
     }
 }
