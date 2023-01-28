@@ -36,6 +36,11 @@ public class LicensesParser implements SqlParser<Licenses, Integer> {
     }
 
     @Override
+    public String createDeleteAllQuery() {
+        return "truncate Uprawnienia;";
+    }
+
+    @Override
     public Optional<Licenses> makeFrom(ResultSet result) {
         try {
             return Optional.of(new Licenses(

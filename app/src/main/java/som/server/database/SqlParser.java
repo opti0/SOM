@@ -10,5 +10,7 @@ public interface SqlParser<T, K> {
     String createUpdateQuery(T t, String[] params);
     String createDeleteQuery(T t);
 
+    String createDeleteAllQuery();
+
     Optional<T> makeFrom(ResultSet result);
 }

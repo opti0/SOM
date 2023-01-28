@@ -37,6 +37,11 @@ public class QualificationsParser implements SqlParser<Qualifications, Integer> 
     }
 
     @Override
+    public String createDeleteAllQuery() {
+        return "truncate Kwalifikacje;";
+    }
+
+    @Override
     public Optional<Qualifications> makeFrom(ResultSet result) {
         try {
             return Optional.of(new Qualifications(

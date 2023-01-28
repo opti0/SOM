@@ -35,6 +35,11 @@ public class SubjectKnowledgeParser implements SqlParser<SubjectKnowledge, Integ
     }
 
     @Override
+    public String createDeleteAllQuery() {
+        return "truncate Znajomosc_Przedmiotu_Maturalnego;";
+    }
+
+    @Override
     public Optional<SubjectKnowledge> makeFrom(ResultSet result) {
         try {
             return Optional.of(new SubjectKnowledge(

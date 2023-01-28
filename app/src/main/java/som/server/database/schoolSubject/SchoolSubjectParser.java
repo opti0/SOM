@@ -35,6 +35,11 @@ public class SchoolSubjectParser implements SqlParser<SchoolSubject, Integer> {
     }
 
     @Override
+    public String createDeleteAllQuery() {
+        return "truncate Przedmiot_Szkolny;";
+    }
+
+    @Override
     public Optional<SchoolSubject> makeFrom(ResultSet result) {
         try {
             return Optional.of(new SchoolSubject(

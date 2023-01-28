@@ -36,6 +36,11 @@ public class StudentsExamParser implements SqlParser<StudentsExam, Integer> {
     }
 
     @Override
+    public String createDeleteAllQuery() {
+        return "truncate Ucznio_Egzamin;";
+    }
+
+    @Override
     public Optional<StudentsExam> makeFrom(ResultSet result) {
         try {
             return Optional.of(new StudentsExam(

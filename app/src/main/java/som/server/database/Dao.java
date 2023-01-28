@@ -77,4 +77,17 @@ public class Dao<T, K> {
     public void delete(T t) {
 
     }
+
+    public void deleteAll() {
+        try {
+            var connection = DriverManager.getConnection(DatabaseData.DB_URL, DatabaseData.DB_USER, DatabaseData.DB_PASSWORD);
+            var statement = connection.createStatement();
+            statement.executeUpdate(parser.createDeleteAllQuery());
+
+            statement.close();
+            connection.close();
+        } catch (SQLException ignored) {
+
+        }
+    }
 }

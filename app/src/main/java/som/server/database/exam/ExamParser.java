@@ -36,6 +36,11 @@ public class ExamParser implements SqlParser<Exam, Integer> {
     }
 
     @Override
+    public String createDeleteAllQuery() {
+        return "truncate Egzamin;";
+    }
+
+    @Override
     public Optional<Exam> makeFrom(ResultSet result) {
         try {
             return Optional.of(new Exam(

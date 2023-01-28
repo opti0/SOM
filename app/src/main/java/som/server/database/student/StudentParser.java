@@ -42,6 +42,11 @@ public class StudentParser implements SqlParser<Student, Integer> {
     }
 
     @Override
+    public String createDeleteAllQuery() {
+        return "TRUNCATE TABLE Uczen;";
+    }
+
+    @Override
     public Optional<Student> makeFrom(ResultSet result) {
         try {
             return Optional.of(new Student(
